@@ -1,7 +1,7 @@
 {
-  "name": "by-tobi",
+  "name": "black-clover-MD",
   "version": "7.7.7",
-  "description": "El Mejor bot de ataque a grupos",
+  "description": "El Mejor bot de WhatsApp",
   "main": "index.js",
   "type": "module",
 
@@ -21,14 +21,14 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/TOBI-12/Tobiyt",
+  "homepage": "https://github.com/thecarlos19/black-clover-MD",
   "author": {
-    "name": "sancheztobi"
+    "name": "thecarlos19"
   },
   "collaborators": {
-    "col1": "pazinxd",
-    "col2": "jojifan",
-    "col3": "todos"
+    "col1": "Antuan",
+    "col2": "Russell",
+    "col3": "Edgar"
   },
   "repository": {
     "type": "git",
