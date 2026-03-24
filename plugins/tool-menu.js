@@ -55,9 +55,9 @@ let handler = async (m, { conn }) => {
   }, { quoted: m });
 };
 
-handler.help = ['menu'];
+handler.help = ['menu19'];
 handler.tags = ['info'];
-handler.command = ['menu', 'ayuda', 'help'];
+handler.command = ['menu19', 'ayuda', 'help'];
 handler.group = false;
 
 export default handler;
