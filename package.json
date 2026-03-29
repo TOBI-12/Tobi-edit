@@ -4,15 +4,10 @@
   "private": true,
   "type": "module",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/DevYerZx/fsociety-bot.git"
-  },
   "scripts": {
     "start": "node index.js",
     "check": "node --check index.js",
     "smoke": "node scripts/smoke-check.mjs",
-    "postinstall": "node scripts/patch-punycode.mjs",
     "pm2:start": "pm2 start ecosystem.config.cjs",
     "pm2:restart": "pm2 restart ecosystem.config.cjs"
   },
@@ -20,6 +15,7 @@
     "@dvyer/baileys": "github:DevYerZx/Baileys-dvvyerMD#main",
     "axios": "^1.6.0",
     "chalk": "^4.1.2",
+    "conf": "^12.0.0",
     "dotenv": "^16.4.7",
     "figlet": "^1.9.3",
     "fluent-ffmpeg": "^2.1.2",
