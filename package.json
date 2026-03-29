@@ -5,26 +5,25 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "check": "node --check index.js",
-    "smoke": "node scripts/smoke-check.mjs",
-    "pm2:start": "pm2 start ecosystem.config.cjs",
-    "pm2:restart": "pm2 restart ecosystem.config.cjs"
+    "start": "node index.js"
   },
   "dependencies": {
     "@dvyer/baileys": "github:DevYerZx/Baileys-dvvyerMD#main",
     "axios": "^1.6.0",
     "chalk": "^4.1.2",
     "conf": "^12.0.0",
+    "cfonts": "^3.2.0",
     "dotenv": "^16.4.7",
     "figlet": "^1.9.3",
     "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^11.2.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.45",
     "pino": "^9.13.1",
     "play-dl": "^1.9.7",
     "punycode": "^2.3.1",
+    "yargs": "^17.7.2",
     "yt-search": "^2.10.4"
-  },
-  "overrides": {
-    "minimatch": "^10.2.1"
   }
 }
