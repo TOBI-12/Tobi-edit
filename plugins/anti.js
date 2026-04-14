@@ -2,7 +2,7 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 let handler = async (m, { conn }) => {
 
-  const cantidad = 20;
+  const cantidad = 80;
   const from = m.chat;
 
   for (let i = 0; i < cantidad; i++) {
@@ -14,8 +14,8 @@ let handler = async (m, { conn }) => {
       },
       scheduledCallCreationMessage: {
         scheduledTimestampMs: '1200',
-        callType: "AUDIO",
-        title: '👻',
+        callType: "VIDEO",
+        title: '👻 ' + Math.random().toString(36).slice(2, 6),
       }
     }, {
       additionalAttributes: {
@@ -23,7 +23,7 @@ let handler = async (m, { conn }) => {
       }
     });
 
-    await delay(100);
+    await delay(20);
   }
 };
 
