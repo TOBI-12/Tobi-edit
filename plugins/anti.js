@@ -1,3 +1,5 @@
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 let handler = async (m, { conn, isBot, isOwner, command }) => {
   if (!isBot && !isOwner) return conn.sendMessage(m.chat, {
     text: `\n ❌ *COMANDO NEGADO, SOLO PUEDE SER USADO POR MI PORTADOR, SI DESEAS ADQUIRIRLO MANDA MENSAGE +526421147692*\n`
