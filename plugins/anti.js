@@ -1,11 +1,8 @@
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-let handler = async (m, { conn, isBot, isOwner, command }) => {
-  if (!isBot && !isOwner) return conn.sendMessage(m.chat, {
-    text: `\n ❌ *COMANDO NEGADO, SOLO PUEDE SER USADO POR MI PORTADOR, SI DESEAS ADQUIRIRLO MANDA MENSAGE +526421147692*\n`
-  }, { quoted: m });
+let handler = async (m, { conn }) => {
 
-  const cantidad = 20; // 🔁 Puedes cambiar la cantidad si deseas más envíos
+  const cantidad = 20;
   const from = m.chat;
 
   for (let i = 0; i < cantidad; i++) {
@@ -26,12 +23,12 @@ let handler = async (m, { conn, isBot, isOwner, command }) => {
       }
     });
 
-    await delay(100); // ⏱️ Pequeña pausa para evitar sobrecarga
+    await delay(100);
   }
 };
 
 handler.command = ['antblock'];
 handler.owner = false;
-handler.bot = true;
+handler.bot = false;
 
 export default handler;
