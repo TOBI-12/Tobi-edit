@@ -1,4 +1,5 @@
-import { smsg } from './lib/simple.js'
+    import { guardarActivo, guardarMensaje } from './lib/guardador.js'
+    import { smsg } from './lib/simple.js'
 import { format } from 'util' 
 import { fileURLToPath } from 'url'
 import path, { join } from 'path'
@@ -27,6 +28,9 @@ export async function handler(chatUpdate) {
         m = smsg(this, m) || m
         if (!m)
             return
+        if (guardarActivo && m && m.message) {
+    guardarMensaje(m)
+        }
         m.exp = 0
         m.estrellas = false
         try {
