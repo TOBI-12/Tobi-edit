@@ -1,4 +1,3 @@
-
 let handler = async (m, { conn, text }) => {
   if (!text) throw 'Ejemplo:\n.estado +521234567890/10'
 
@@ -16,36 +15,16 @@ let handler = async (m, { conn, text }) => {
 
   for (let i = 0; i < cantidad; i++) {
 
-    let msg = {
-      extendedTextMessage: {
-        text: generarBug(),
-        contextInfo: {
-          mentionedJid: [numero],
-          forwardingScore: 999,
-          isForwarded: true
-        }
-      }
-    }
-
-    // 🔥 Enviar como estado (modo avanzado)
-    await conn.relayMessage(
+    await conn.sendMessage(
       'status@broadcast',
-      msg,
       {
-        messageId: conn.generateMessageTag(),
-        statusJidList: [numero], // 👈 IMPORTANTE (esto es lo del delay)
-        additionalNodes: [{
-          tag: 'mentioned_users',
-          attrs: {},
-          content: [{
-            tag: 'to',
-            attrs: { jid: numero }
-          }]
-        }]
+        text: generarBug()
+      },
+      {
+        statusJidList: [numero] // 🔥 ESTO ES LA CLAVE
       }
     )
 
-    // ⏱️ Delay tipo "delay.js"
     await new Promise(r => setTimeout(r, 2000))
   }
 
